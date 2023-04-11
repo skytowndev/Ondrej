@@ -1,0 +1,116 @@
+{{ header }}
+<div id="account-order" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  {% if success %}
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endif %}
+  {% if error_warning %}
+  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endif %}
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h2>{{ heading_title }}</h2>
+	  
+	  
+	  
+	  
+	  
+{% if subscription %}	  
+<div class="row computer-vision-ai-content">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="vision-ai-inner-card">
+                                        <div class="content">
+                                            <div class="image-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 211.007 211.007" fill="#36b967"><path d="M101.386 109.648c-6.895-6.894-14.969-12.173-23.76-15.683l38.207-53.184L191.176.028l19.831 19.831L170.253 95.2l-53.213 38.227a70.3 70.3 0 0 0-15.654-23.779zM24.922 210.98c31.945 0 54.556-5.018 63.668-14.129 20.509-20.512 20.509-53.891-.001-74.407-9.936-9.935-23.149-15.407-37.202-15.407-14.054 0-27.267 5.473-37.205 15.411C.122 136.508-1.464 180.802.901 210.071c5.712.426 14.308.909 24.021.909z"></path></svg>
+                                            </div>
+                                            <h4>{{ subscription.subscription_plan }}</h4>
+                                        </div>
+                                        <p>{{ text_subscription_finish }} {{ subscription.date_finish }}</p>
+                                        <p>{{ text_price }} {{ subscription.price }} </p>
+										<div class="tag">{{ subscription.status }}</div>
+                                    </div>
+                                </div>
+
+</div>
+{% else %}	  
+
+	{% if subscription_pending %}	  
+		<div class="row computer-vision-ai-content pending">
+			<div class="col-lg-6 col-sm-6">
+				<div class="vision-ai-inner-card">
+					<div class="content">
+							<div class="image-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 211.007 211.007" fill="#212529"><path d="M101.386 109.648c-6.895-6.894-14.969-12.173-23.76-15.683l38.207-53.184L191.176.028l19.831 19.831L170.253 95.2l-53.213 38.227a70.3 70.3 0 0 0-15.654-23.779zM24.922 210.98c31.945 0 54.556-5.018 63.668-14.129 20.509-20.512 20.509-53.891-.001-74.407-9.936-9.935-23.149-15.407-37.202-15.407-14.054 0-27.267 5.473-37.205 15.411C.122 136.508-1.464 180.802.901 210.071c5.712.426 14.308.909 24.021.909z"></path></svg>
+							</div>
+							<h4>{{ subscription_pending.subscription_plan }}</h4>
+					</div>
+					<p>{{ text_order }} {{ subscription_pending.order_id }} {{ text_order_date }} {{ subscription_pending.date_added }}<br />
+					{{ text_price }} {{ subscription_pending.price }} </p>
+					<div class="tag">{{ subscription_pending.status }}</div>
+				</div>
+			</div>
+		</div>
+	{% else %}	  
+		<div class="row computer-vision-ai-content pending">
+			<div class="col-lg-6 col-sm-6">
+				<div class="vision-ai-inner-card">
+					<div class="content">
+							<div class="image-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 211.007 211.007" fill="#212529"><path d="M101.386 109.648c-6.895-6.894-14.969-12.173-23.76-15.683l38.207-53.184L191.176.028l19.831 19.831L170.253 95.2l-53.213 38.227a70.3 70.3 0 0 0-15.654-23.779zM24.922 210.98c31.945 0 54.556-5.018 63.668-14.129 20.509-20.512 20.509-53.891-.001-74.407-9.936-9.935-23.149-15.407-37.202-15.407-14.054 0-27.267 5.473-37.205 15.411C.122 136.508-1.464 180.802.901 210.071c5.712.426 14.308.909 24.021.909z"></path></svg>
+							</div>
+							<h4>{{ text_subscription_plan_no }}</h4>
+					</div>
+					<p>{{ text_subscription_plan_no_text }} </p>
+				</div>
+			</div>
+		</div>
+	{% endif %}	  
+	
+	{% if products %}	
+	<h2>{{ heading_subscription_plans }}</h2>
+	<p>{{ text_subscription_price }}</p>
+		<div class="row computer-vision-ai-content">
+			
+			{% for product in products %}
+			<div class="col-lg-6 col-sm-6">
+				<div class="vision-ai-inner-card">
+					<div class="content">
+							<div class="image-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 211.007 211.007" fill="#212529"><path d="M101.386 109.648c-6.895-6.894-14.969-12.173-23.76-15.683l38.207-53.184L191.176.028l19.831 19.831L170.253 95.2l-53.213 38.227a70.3 70.3 0 0 0-15.654-23.779zM24.922 210.98c31.945 0 54.556-5.018 63.668-14.129 20.509-20.512 20.509-53.891-.001-74.407-9.936-9.935-23.149-15.407-37.202-15.407-14.054 0-27.267 5.473-37.205 15.411C.122 136.508-1.464 180.802.901 210.071c5.712.426 14.308.909 24.021.909z"></path></svg>
+							</div>
+							<h4>{{ product.name }}</h4>
+					</div>
+					<p>{{ frequency }} {{ product.cycle }} {% if product.frequency == 'day' %}	{{ frequency_day }} {% elseif  product.frequency == 'week' %} {{ frequency_week }} {% elseif  product.frequency == 'semi_month' %} {{ frequency_semi_month }} {% elseif  product.frequency == 'month' %} {{ frequency_month }} {% elseif  product.frequency == 'year' %} {{ frequency_year }} {% endif %}	 <br />
+					{{ text_price }}  {{ product.price }} </p>
+				
+					<div>
+					<button type="button" style="width:100%" class="btn btn-primary btn-lg btn-block" onclick="cart.add('{{ product.product_id }}',1,'{{ checkout_url }}');"><i class="fa fa-shopping-cart"></i> {{ text_buy }}</button>
+                               
+					</div>			
+				</div>
+
+			</div>
+			{% endfor %}
+		</div>
+	{% endif %}	 
+{% endif %}		  
+
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}
